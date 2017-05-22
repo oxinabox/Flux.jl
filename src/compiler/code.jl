@@ -12,7 +12,7 @@ end
 
 function makegraph(graph, args)
   graph = prewalk(graph) do v
-    value(v) isa Constant && (i = findfirst(args, value(v).value)) ≠ 0 ?
+    isconstant(v) && (i = findfirst(args, value(v[1]))) ≠ 0 ?
       inputnode(i) :
       v
   end
@@ -41,7 +41,7 @@ end
 
 function deref_params(v)
   map(v) do x
-    x isa Constant && @capture(x.value, self.p_) ? Constant(:(Flux.state(self.$p))) : x
+    @capture(x, self.p_) ? :(Flux.state(self.$p)) : x
   end
 end
 
