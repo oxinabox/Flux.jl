@@ -7,6 +7,8 @@ Chain
 Dense
 ```
 
+
+
 ## Convolution and Pooling Layers
 
 These layers are used to build convolutional neural networks (CNNs).
@@ -30,11 +32,23 @@ GRU
 Flux.Recur
 ```
 
-## Esoteric Layers
-These are marginally more obscure layers.
+## Other General Purpose Layers
+These are marginally more obscure than the Basic Layers.
+But incontrast to the layers described in the other sections are not readily grouped around a paparticular purpose (e.g. CNNs or RNNs).
 
 ```@docs
 MaxOut
+```
+
+# Normalisation & Regularisation
+
+These layers don't affect the structure of the network but may improve training times or reduce overfitting.
+
+```@docs
+Flux.testmode!
+BatchNorm
+Dropout
+LayerNorm
 ```
 
 ## Activation Functions
@@ -51,13 +65,4 @@ elu
 swish
 ```
 
-## Normalisation & Regularisation
-
-These layers don't affect the structure of the network but may improve training times or reduce overfitting.
-
-```@docs
-Flux.testmode!
-BatchNorm
-Dropout
-LayerNorm
-```
+#
